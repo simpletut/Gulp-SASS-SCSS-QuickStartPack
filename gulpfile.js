@@ -14,8 +14,8 @@ var changed = require('gulp-changed');
 // - SCSS/CSS
 ///////////////
 
-var SCSS_SRC = './src/Assets/scss/**/*.scss';
-var SCSS_DEST = './src/Assets/css';
+var SCSS_SRC = './projectAssets/scss/**/*.scss';
+var SCSS_DEST = './projectAssets/css';
 
 // Compile SCSS
 gulp.task('compile_scss', function(){
@@ -39,8 +39,8 @@ gulp.task('watch_scss', function(){
 // - JS
 ///////////////
 
-var js_SRC = ['./src/Assets/js/scripts.js'];
-var js_DEST = './src/Assets/js/minify_js';
+var js_SRC = ['./projectAssets/js/scripts.js'];
+var js_DEST = './projectAssets/js';
 
 // Minify JS
 gulp.task('minify_js', function(){
