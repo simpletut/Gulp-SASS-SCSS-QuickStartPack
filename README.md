@@ -4,66 +4,75 @@ If you want to work with SASS/SCSS files, you will to use a task runner such as 
 
 In case you are not familiar, this is a task runner which runs on Node js.
 
-It can be used to ‘watch’ the .scss files and detect changes (when we alter the files and save), and automatically compile/minify the code outputting as standard css.
+Before you can use these files, please install Node on your computer:
 
-This approach would still not require any changes to your project files.
+---
+https://nodejs.org/en/
+---
 
-### Suggested Workflow
+Additional Installs
 
-## Install
-
-Globally install node - Install node js runtime environment
-
-Globally install Gulp - Use node package manager to install Gulp globally on your machine
+Please install gulp globally via npm
 
 ---
 	npm install –g gulp
 ---
 
-## Per-project (Intergrate into your project)
+Optional - For ease of use, please install git on your computer to enable you to follow our command line instructions:
+
+Windows: https://git-scm.com/download/windows
+Mac: https://git-scm.com/download/mac
+
+
+## Quick info
+
+
+We will be using gulp to ‘watch’ the .scss files and detect changes (when we alter the files and save), and automatically compile/minify the code outputting as standard css. We will also be minifying our JS.
+
+Please include the minified versions of these files in your project. (You will work and modify the SCSS/un-minified files)
+
+#### Integration guide 
+
+Please open CMD/Terminal and navigate inside your project folder
+
+---
+cd projectFolder
+---
+
+## Once per project 
 
 1. Clone this repository into your project folder (files - Package.js/gulpfile.js)
 
--	Package.js
-This is a simple ‘json’ file that will be used by node to install the following dependences
-
--	gulpfile.js
-I have pre-defined some ‘tasks’ that continually watch the ‘.scss’ files and detect changes. Once a change is detected, it will automatically compile, minify and output into the css folder.
-
-2 Alter 'src' variables in 'gulpfile.js' to point to your CSS/SCSS folders within your project
-
-3.	Open Command prompt / Terminal (Windows/Mac)
-
-4.	Navigate to site directory 
-
-cd desktop/siteFolder
+---
+	git clone https://github.com/simpletut/QuickStartGulp.git . 
+---
 
 5.	Install dependences 
 
-npm install 
+---
+	npm install
+---
+
+3. Run gulp
 	
-6.	Run gulp
-
-Within cmd/terminal simply call
-
+---
 	gulp
+---
+
+# Done :) 
+
+## Testing
+
+1. Open the default 'scss' file within the projectAssets scss folder
+2. edit the file as required 
+3. save changes 
+4. check the minified css file and inspect changes
+
+## Notes
+
+1. Please ensure you have run gulp within your project folder and it is running at all times whilst you are editing your files
 
 
-#That’s it .. you can now begin editing the ‘.scss’ files.
+### Existing projects
 
-Note: 
-1.	Minified standard ‘.css’ files should be referenced in the project default master 
-
-2.	When you run ‘npm install’ it will create a ‘node_modules’ folder on your local root folder.
-
-Users should not include this in the project as this is unique to your local environment.
-
-Each user will need to install dependences themselves but these files will be there ready for next time you work on this project.
-
-
-## Existing projects
-
-	Everything should be installed and configured for this project
-
-1.	Open cmd/terminal and navigate to project directory 
-2.	Run gulp – ‘gulp’
+As you have already installed all the required dependencies, you only need to run gulp within your project folder.
