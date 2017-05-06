@@ -1,0 +1,115 @@
+@import '_config';
+
+/* Fonts -
+
+regular 400
+regular 400 Italic
+bold 700
+bold 700 Italic
+
+ */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: $black;
+  font-weight: 400;
+  font-style: normal;
+  background-color: $lightGrey;
+}
+
+
+a {
+  text-decoration: none;
+  @include transition(.4s ease-in-out);
+  cursor: pointer;
+
+  &:hover {
+    color: $red;
+    @include transition(.4s ease-in-out);
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+
+
+}
+
+/***************************
+* Headings
+***************************/
+
+h1 {
+	font-size: 30px;
+	line-height: 32px;
+	font-weight: 400;
+	color: $black;
+	font-style: normal;
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin: 0 0 30px;
+}
+
+.title {
+	@extend h1;
+}
+
+
+/***************************
+* General
+***************************/
+
+.container-fluid {
+	margin-top: 30px;
+	line-height: 24px;
+	max-width: 1465px;
+}
+
+
+/***************************
+* Custom Buttons
+***************************/
+
+.buttons {
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+
+    a {
+	    display: inline-block;
+	    font-weight: 400;
+	    font-size: 18px;
+	    line-height: normal;
+	    font-style: normal;
+	    color: $white;
+	    text-transform: uppercase;
+	    padding: 15px;
+	    text-align: center;
+	    text-decoration: none;
+	    border: none;
+	    background: $black;
+	    border-radius: 3px;
+	    margin-bottom: 10px;
+
+	    &:hover {
+    	    background: $red;
+	    }
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

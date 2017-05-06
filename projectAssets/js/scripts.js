@@ -1,5 +1,5 @@
-$(document).ready(function(){
+function log(e){
+	console.log(e);
+}
 
-	alert('Hello World!');
-
-});
+log('Hello world!');
