@@ -1,11 +1,15 @@
 /*
 	Default media queries
 */
-$small_screen: 1280px;
-$mobile: 768px;
+
+/* 1280px */
+$small_screen: 80em;
+
+/* 768px */
+$mobile: 48em;
 
 /*
-Vars
+	Vars
  */
 $black: #010000;
 $white: #ffffff;
@@ -15,7 +19,7 @@ $red: #ff1755;
 
 
 /*
-Mixins
+	Mixins
  */
 
 @mixin translateY($e) {
