@@ -7,6 +7,8 @@ var minifyCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var changed = require('gulp-changed');
+var chmod = require('gulp-chmod');
+var sassInheritance = require('gulp-better-sass-inheritance');
 
 
 
@@ -21,10 +23,12 @@ var SCSS_DEST = './projectAssets/css';
 gulp.task('compile_scss', function(){
 
 	gulp.src(SCSS_SRC)
+	.pipe(sassInheritance({base: './projectAssets/scss/'}))
 	.pipe(sass().on('error', sass.logError))
 	.pipe(minifyCSS())
 	.pipe(rename({ suffix: '.min' }))
 	.pipe(changed(SCSS_DEST))
+	.pipe(chmod(755))
 	.pipe(gulp.dest(SCSS_DEST));
 
 
