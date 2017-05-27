@@ -17,26 +17,34 @@ var sassInheritance = require('gulp-better-sass-inheritance');
 ///////////////
 
 var SCSS_SRC = './projectAssets/scss/**/*.scss';
+var SCSS_Inheritance = './projectAssets/scss/';
 var SCSS_DEST = './projectAssets/css';
 
-// Compile SCSS
-gulp.task('compile_scss', function(){
+gulp.task('compile_scss', function() {
+    return gulp.src(SCSS_SRC)
 
-	gulp.src(SCSS_SRC)
-	.pipe(sassInheritance({base: './projectAssets/scss/'}))
-	.pipe(sass().on('error', sass.logError))
-	.pipe(minifyCSS())
-	.pipe(rename({ suffix: '.min' }))
-	.pipe(changed(SCSS_DEST))
-	.pipe(chmod(755))
-	.pipe(gulp.dest(SCSS_DEST));
+      //filter out unchanged scss files, only works when watching 
+      .pipe(gulpif(global.isWatching, cached('sass')))
 
+      //find files that depend on the files that have changed 
+      .pipe(sassInheritance({base: SCSS_Inheritance}))
 
+      //process scss files 
+      .pipe(sass())
+
+      .pipe(minifyCSS())
+	    .pipe(rename({ suffix: '.min' }))
+	   
+      // Uncomment if required
+      //.pipe(chmod(755))
+
+      //save all the files 
+      .pipe(gulp.dest(SCSS_DEST));
 });
 
-// detect changes in SCSS
-gulp.task('watch_scss', function(){
-	gulp.watch(SCSS_SRC, ['compile_scss']);
+gulp.task('watch_scss', ['compile_scss'], function() {
+    global.isWatching = true;
+    gulp.watch(SCSS_SRC, ['compile_scss']);
 });
 
 ///////////////
