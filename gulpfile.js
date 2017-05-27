@@ -7,8 +7,10 @@ var minifyCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var changed = require('gulp-changed');
-var chmod = require('gulp-chmod');
 var sassInheritance = require('gulp-better-sass-inheritance');
+var chmod = require('gulp-chmod');
+var cached = require('gulp-cached');
+var gulpif = require('gulp-if');
 
 
 
