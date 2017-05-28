@@ -11,6 +11,7 @@ var sassInheritance = require('gulp-better-sass-inheritance');
 var chmod = require('gulp-chmod');
 var cached = require('gulp-cached');
 var gulpif = require('gulp-if');
+var wait = require('gulp-wait')
 
 
 
@@ -24,6 +25,9 @@ var SCSS_DEST = './projectAssets/css';
 
 gulp.task('compile_scss', function() {
     return gulp.src(SCSS_SRC)
+
+      // Timeout (Windows/Sublime Text V2 Fix)
+      .pipe(wait(200))
 
       //filter out unchanged scss files, only works when watching 
       .pipe(gulpif(global.isWatching, cached('sass')))
