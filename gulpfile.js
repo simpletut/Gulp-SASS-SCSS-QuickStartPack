@@ -11,7 +11,8 @@ var sassInheritance = require('gulp-better-sass-inheritance');
 var chmod = require('gulp-chmod');
 var cached = require('gulp-cached');
 var gulpif = require('gulp-if');
-var wait = require('gulp-wait')
+var wait = require('gulp-wait');
+var notify = require('gulp-notify');
 
 
 
@@ -37,6 +38,16 @@ gulp.task('compile_scss', function() {
 
       //process scss files 
       .pipe(sass())
+      .on('error', function (err) {
+            console.log(err.toString());
+            notify.onError({
+                title: "Gulp SASS Error"
+                //title: "Gulp error in " + err.plugin,
+                //message:  err.toString()
+            })(err);
+
+            this.emit('end');
+        })
 
       .pipe(minifyCSS())
 	    .pipe(rename({ suffix: '.min' }))
