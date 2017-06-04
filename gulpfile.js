@@ -13,6 +13,7 @@ var cached = require('gulp-cached');
 var gulpif = require('gulp-if');
 var wait = require('gulp-wait');
 var notify = require('gulp-notify');
+var babel = require('gulp-babel');
 
 
 
@@ -74,6 +75,21 @@ var js_DEST = './projectAssets/js';
 // Minify JS
 gulp.task('minify_js', function(){
 	gulp.src(js_SRC)
+
+  .pipe(babel({
+      presets: ['es2015']
+  }))
+  .on('error', function (err) {
+    console.log(err.toString());
+    notify.onError({
+        //title: "Gulp Javascript Error"
+        title: "Gulp error in " + err.plugin,
+        message:  err.toString()
+    })(err);
+
+    this.emit('end');
+  })
+
 	.pipe(uglify())
 	.pipe(rename({ suffix: '.min' }))
 	.pipe(changed(js_DEST))
